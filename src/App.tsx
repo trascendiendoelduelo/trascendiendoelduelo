@@ -79,8 +79,8 @@ const SPEAKERS = [
   },
   {
     name: "Claudia Hurtado",
-    role: "Especialista Invitada",
-    tags: ["Próximamente"],
+    role: "Coach de PNL",
+    tags: ["PNL", "Anclaje"],
     image: "https://res.cloudinary.com/doguggkp8/image/upload/v1775176714/ClaudiaHurtado_not6az.png",
   }
 ];
@@ -88,7 +88,7 @@ const SPEAKERS = [
 const FAQS = [
   {
     q: "¿Para quién es este evento?",
-    a: "Para cualquier persona que esté atravesando un proceso de pérdida (fallecimiento, separación, cambio de vida) y busque herramientas reales y contención para sanar."
+    a: "Para cualquier persona que esté atravesando un proceso de pérdida física de un familiar, amigo o persona cercana, ya sea para tu propia sanación o para ayudar a alguien más."
   },
   {
     q: "¿Necesito conocimientos previos?",
@@ -101,6 +101,10 @@ const FAQS = [
   {
     q: "¿Cómo reservo mi cupo?",
     a: "Puedes hacerlo llenando el formulario de esta página y realizando el pago vía Yape o Mercado Pago. Luego envías tu comprobante por WhatsApp."
+  },
+  {
+    q: "¿Qué tipo de ropa debo llevar?",
+    a: "Te recomendamos asistir con ropa cómoda que te permita moverte libremente, disfrutar de las dinámicas del taller vivencial y estar a gusto durante la meditación en vivo."
   }
 ];
 
@@ -128,7 +132,7 @@ const Navbar = () => {
           <a href="#speakers" className="text-sm font-medium hover:text-deep-bronze transition-colors">Ponentes</a>
           <a href="#blog" className="text-sm font-medium hover:text-deep-bronze transition-colors">Blog</a>
           <a href="#inversion" className="text-sm font-medium hover:text-deep-bronze transition-colors">Inversión</a>
-          <a href={WHATSAPP_URL} className="bg-twilight-navy text-pearl-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-deep-bronze transition-all duration-300 shadow-lg shadow-twilight-navy/20">
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="bg-twilight-navy text-pearl-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-deep-bronze transition-all duration-300 shadow-lg shadow-twilight-navy/20">
             Reservar Cupo
           </a>
         </div>
@@ -151,7 +155,7 @@ const Navbar = () => {
             <a href="#speakers" onClick={() => setIsOpen(false)} className="text-lg font-medium">Ponentes</a>
             <a href="#blog" onClick={() => setIsOpen(false)} className="text-lg font-medium">Blog</a>
             <a href="#inversion" onClick={() => setIsOpen(false)} className="text-lg font-medium">Inversión</a>
-            <a href={WHATSAPP_URL} className="bg-twilight-navy text-pearl-white py-4 rounded-xl text-center font-bold">
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="bg-twilight-navy text-pearl-white py-4 rounded-xl text-center font-bold">
               Reservar mi Cupo
             </a>
           </motion.div>
@@ -380,18 +384,29 @@ export default function App() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+              className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4"
             >
               <a 
                 href="#inversion" 
-                className="w-full sm:w-auto bg-twilight-navy text-pearl-white px-10 py-5 rounded-full font-bold text-lg hover:bg-deep-bronze transition-all duration-300 shadow-2xl shadow-twilight-navy/30 flex items-center justify-center gap-2 group"
+                className="w-full sm:w-auto bg-twilight-navy text-pearl-white px-8 py-4 rounded-full font-bold text-lg hover:bg-deep-bronze transition-all duration-300 shadow-2xl shadow-twilight-navy/30 flex items-center justify-center gap-2 group"
               >
                 Reservar mi cupo
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
               </a>
               <a 
+                href={BROCHURE_PDF_URL} 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto bg-champagne-gold text-twilight-navy px-8 py-4 rounded-full font-bold text-lg hover:bg-white transition-all duration-300 shadow-xl flex items-center justify-center gap-2"
+              >
+                <Download size={20} />
+                Descargar Brochure
+              </a>
+              <a 
                 href={WHATSAPP_URL} 
-                className="w-full sm:w-auto bg-white border-2 border-twilight-navy text-twilight-navy px-10 py-5 rounded-full font-bold text-lg hover:bg-ethereal-blue transition-all duration-300 flex items-center justify-center gap-2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto bg-white border-2 border-twilight-navy text-twilight-navy px-8 py-4 rounded-full font-bold text-lg hover:bg-ethereal-blue transition-all duration-300 flex items-center justify-center gap-2"
               >
                 <MessageCircle size={20} />
                 Hablar por WhatsApp
@@ -453,6 +468,47 @@ export default function App() {
               viewport={{ once: true }}
               className="h-px bg-champagne-gold/30 mx-auto"
             />
+          </div>
+        </div>
+      </section>
+
+      {/* --- PARA QUIÉN ES ESTE EVENTO --- */}
+      <section className="py-24 bg-soft-lavender/20">
+        <div className="container mx-auto px-6">
+          <SectionTitle 
+            title="¿Para quién es este evento?" 
+            subtitle="Un espacio seguro para ti" 
+          />
+          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white p-10 rounded-3xl shadow-lg border border-ethereal-blue text-center"
+            >
+              <div className="w-16 h-16 bg-ethereal-blue/30 rounded-full flex items-center justify-center mx-auto mb-6 text-twilight-navy">
+                <CheckCircle2 size={32} />
+              </div>
+              <h3 className="text-2xl mb-4 font-bold text-twilight-navy">Proceso de Pérdida</h3>
+              <p className="text-twilight-navy/70 text-lg">
+                Para cualquier persona que esté atravesando la pérdida física de un familiar, amigo o persona cercana, ya sea para sanar o para ayudar a alguien más.
+              </p>
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-white p-10 rounded-3xl shadow-lg border border-ethereal-blue text-center"
+            >
+              <div className="w-16 h-16 bg-champagne-gold/30 rounded-full flex items-center justify-center mx-auto mb-6 text-deep-bronze">
+                <CheckCircle2 size={32} />
+              </div>
+              <h3 className="text-2xl mb-4 font-bold text-twilight-navy">Para Toda la Familia</h3>
+              <p className="text-twilight-navy/70 text-lg">
+                Un espacio diseñado para ser compartido. El duelo impacta a todo el entorno, y sanar en conjunto fortalece los lazos familiares.
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -609,9 +665,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* --- BLOG / LECTURA RECOMENDADA --- */}
-      <BlogSection />
-
       {/* --- DETALLES DEL EVENTO --- */}
       <section className="py-32 bg-twilight-navy text-pearl-white relative overflow-hidden">
         <div className="container mx-auto px-6">
@@ -743,7 +796,7 @@ export default function App() {
                     "Acceso total al taller presencial",
                     "Coffee Break premium incluido",
                     "Material para taller",
-                    "Sesión de Q&A con ponentes",
+                    "Sesión de preguntas con ponentes",
                     "Material digital post-evento"
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-center gap-3">
@@ -762,6 +815,8 @@ export default function App() {
                   </a>
                   <a 
                     href={WHATSAPP_URL} 
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="bg-white border-2 border-twilight-navy text-twilight-navy px-12 py-6 rounded-full font-bold text-xl hover:bg-ethereal-blue transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <MessageCircle size={24} />
@@ -888,6 +943,8 @@ export default function App() {
               </div>
               <a 
                 href={MERCADO_PAGO_URL} 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full bg-[#009EE3] text-white py-4 rounded-full font-bold hover:bg-[#007BB3] transition-colors"
               >
                 Pagar Online
@@ -946,6 +1003,9 @@ export default function App() {
         </div>
       </section>
 
+      {/* --- BLOG / LECTURA RECOMENDADA --- */}
+      <BlogSection />
+
       {/* --- FINAL CTA --- */}
       <section className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-twilight-navy">
@@ -980,6 +1040,8 @@ export default function App() {
               </a>
               <a 
                 href={WHATSAPP_URL} 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-transparent border-2 border-pearl-white text-pearl-white px-12 py-6 rounded-full font-bold text-xl hover:bg-pearl-white hover:text-twilight-navy transition-all duration-300"
               >
                 Más información
@@ -1070,6 +1132,8 @@ export default function App() {
       {/* Floating WhatsApp Button */}
       <a 
         href={WHATSAPP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
         className="fixed bottom-8 right-8 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 group"
         aria-label="Contactar por WhatsApp"
       >
