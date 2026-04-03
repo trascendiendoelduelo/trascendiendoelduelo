@@ -126,6 +126,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-8">
           <a href="#historia" className="text-sm font-medium hover:text-deep-bronze transition-colors">Nuestra Historia</a>
           <a href="#speakers" className="text-sm font-medium hover:text-deep-bronze transition-colors">Ponentes</a>
+          <a href="#blog" className="text-sm font-medium hover:text-deep-bronze transition-colors">Blog</a>
           <a href="#inversion" className="text-sm font-medium hover:text-deep-bronze transition-colors">Inversión</a>
           <a href={WHATSAPP_URL} className="bg-twilight-navy text-pearl-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-deep-bronze transition-all duration-300 shadow-lg shadow-twilight-navy/20">
             Reservar Cupo
@@ -148,6 +149,7 @@ const Navbar = () => {
           >
             <a href="#historia" onClick={() => setIsOpen(false)} className="text-lg font-medium">Nuestra Historia</a>
             <a href="#speakers" onClick={() => setIsOpen(false)} className="text-lg font-medium">Ponentes</a>
+            <a href="#blog" onClick={() => setIsOpen(false)} className="text-lg font-medium">Blog</a>
             <a href="#inversion" onClick={() => setIsOpen(false)} className="text-lg font-medium">Inversión</a>
             <a href={WHATSAPP_URL} className="bg-twilight-navy text-pearl-white py-4 rounded-xl text-center font-bold">
               Reservar mi Cupo
@@ -189,6 +191,132 @@ const SectionTitle = ({ title, subtitle, light = false }: { title: string, subti
     />
   </div>
 );
+
+const BlogSection = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <section id="blog" className="py-32 bg-soft-lavender/10 relative overflow-hidden">
+      <div className="container mx-auto px-6">
+        <SectionTitle 
+          title="Lectura Recomendada" 
+          subtitle="Reflexiones para el alma" 
+        />
+
+        <div className="max-w-4xl mx-auto bg-white rounded-[3rem] shadow-2xl overflow-hidden border border-ethereal-blue">
+          <div className="p-12 md:p-20">
+            <div className="flex flex-col md:flex-row items-center gap-8 mb-12 border-b border-ethereal-blue pb-10 text-center md:text-left">
+              <img 
+                src={SPEAKERS.find(s => s.name.includes('Yhis'))?.image} 
+                alt="Yhis Bohorquez, autora del blog sobre sanación del duelo" 
+                className="w-32 h-32 rounded-full object-cover border-4 border-champagne-gold shadow-lg"
+                referrerPolicy="no-referrer"
+              />
+              <div>
+                <h3 className="text-3xl md:text-4xl font-cinzel text-twilight-navy mb-4 leading-tight">La Paz no es un milagro, es una construcción diaria</h3>
+                <p className="text-deep-bronze font-cormorant italic text-xl">Por: Yhis Bohorquez</p>
+              </div>
+            </div>
+
+            <div className={`prose prose-lg max-w-none text-twilight-navy/80 leading-relaxed space-y-8 relative transition-all duration-700 ${!isExpanded ? 'max-h-[400px] overflow-hidden' : ''}`}>
+              <p className="font-medium text-2xl italic-accent text-twilight-navy text-center mb-10">
+                Trascender el dolor no es fácil, al inicio es un gran desafío, pero la constancia gana la batalla.
+              </p>
+              <p className="text-lg">
+                Estos fueron los hábitos de cada día que me ayudaron a transformar el dolor en AMOR puro e inquebrantable, aportando a un cambio en mi mentalidad, porque si la mente es fuerte, no hay tormenta que te derrote. Te puedes caer mil veces, pero la mentalidad y actitud te dan la fuerza para levantarte una y otra vez, con las rodillas raspadas, sacudiendo los raspones. Lo importante es nunca claudicar. La paz no es un milagro, es el resultado de las pequeñas acciones realizadas día a día. El duelo es la mutilación del alma; volver a pararse, a levantarse necesita mucho esfuerzo, constancia y disciplina en los simples hábitos que alimentan el alma...
+              </p>
+
+              <ul className="space-y-8 mt-12 list-none pl-0">
+                <li className="flex gap-6 items-start">
+                  <span className="text-3xl shrink-0">🧘</span>
+                  <p className="text-lg"><strong className="text-twilight-navy">Medita:</strong> Todos los días aunque no quieras hacerlo, aunque el tiempo te gane y las tareas del día a día te consuman, aunque la tristeza envuelva en sus brazos y te sientas paralizada MEDITA.</p>
+                </li>
+                <li className="flex gap-6 items-start">
+                  <span className="text-3xl shrink-0">🙏</span>
+                  <p className="text-lg"><strong className="text-twilight-navy">Agradece:</strong> Aunque no sepas de qué agradecer, aunque sientas que la vida ha sido injusta contigo, aunque sientas enojo con el mundo AGRADECE. Mira los pequeños milagros de la vida, mira las historias de tu entorno, aunque parezca que todo está mal tienes un corazón que late, tienes recuerdos en tu mente, y experiencias que alimentan el alma. No te centres en lo que no tienes, agradece hasta por el suelo que pisas, lo simple es un milagro.</p>
+                </li>
+                <li className="flex gap-6 items-start">
+                  <span className="text-3xl shrink-0">🤝</span>
+                  <p className="text-lg"><strong className="text-twilight-navy">Comparte con alguien:</strong> No importa lo poco que puedas, a veces una palabra basta, un abrazo, un pan, escuchar también es un regalo.</p>
+                </li>
+                <li className="flex gap-6 items-start">
+                  <span className="text-3xl shrink-0">🚶</span>
+                  <p className="text-lg"><strong className="text-twilight-navy">Camina:</strong> Sal de la cama, aunque quieras quedarte envuelta en el dolor, mira el sol, mira el cielo, pisa la tierra descalza, respira profundo, mira la creación y descubre su maravillosa armonía. Mira cómo todo cumple un ciclo, nada en la naturaleza se acaba, todo se transforma y regresa a la vida sin perder su esencia. Nosotros somos hijos de la naturaleza, nada se acaba, los ciclos de la vida son transformaciones constantes.</p>
+                </li>
+                <li className="flex gap-6 items-start">
+                  <span className="text-3xl shrink-0">💧</span>
+                  <p className="text-lg"><strong className="text-twilight-navy">Llora:</strong> No desde la queja, llora desde el entendimiento. Soy humana y siento mi dolor, no lo reprimo, pero tampoco dejo que me endurezca. Lluevo, me nublo, un día volveré a brillar.</p>
+                </li>
+                <li className="flex gap-6 items-start">
+                  <span className="text-3xl shrink-0">✉️</span>
+                  <p className="text-lg"><strong className="text-twilight-navy">Escribe una carta de agradecimiento:</strong> A esa personita que no está en tu vida física, pero está en tu vida espiritual, que es una presencia mayor. Escríbele agradeciendo por cada segundo de amor, el amor no se acaba con la ausencia.</p>
+                </li>
+                <li className="flex gap-6 items-start">
+                  <span className="text-3xl shrink-0">❤️</span>
+                  <p className="text-lg"><strong className="text-twilight-navy">Escríbete una carta de gratitud y de AMOR a ti:</strong> Perdónate, ámate, entiende que hiciste lo mejor que pudiste, no todo está en tus manos, entenderlo es sanador.</p>
+                </li>
+                <li className="flex gap-6 items-start">
+                  <span className="text-3xl shrink-0">📚</span>
+                  <p className="text-lg"><strong className="text-twilight-navy">Estudia, estudia, estudia:</strong> Todo lo referente a la espiritualidad, a la conciencia, filosofía, ahí habita nuestro conocimiento. El conocimiento es la llave de los candados del sufrimiento, investiga referencias científicas del alma, aprende que el AMOR es la fuerza más poderosa para romper las cadenas del dolor.</p>
+                </li>
+                <li className="flex gap-6 items-start">
+                  <span className="text-3xl shrink-0">🌸</span>
+                  <p className="text-lg"><strong className="text-twilight-navy">Abraza la vida:</strong> Esta es una escuela, estamos de paso. Abraza un árbol, besa una flor, embellece tus ojos con el vuelo de un ave, háblale a la luna, mira las estrellas. Somos muy pequeños en este vasto universo para vivir sufriendo.</p>
+                </li>
+                <li className="flex gap-6 items-start">
+                  <span className="text-3xl shrink-0">✨</span>
+                  <p className="text-lg"><strong className="text-twilight-navy">Elimina la queja:</strong> Y cámbiala por la gratitud, Hooponopono, servicio, arte, acción, AMOR, acción.</p>
+                </li>
+                <li className="flex gap-6 items-start">
+                  <span className="text-3xl shrink-0">🦅</span>
+                  <p className="text-lg"><strong className="text-twilight-navy">Perdónate:</strong> Por todo lo que esperabas de la vida y no llegó, desdibuja el futuro que tu mente dibujó y abraza la realidad que tu alma está viviendo, que aunque parezca no tener sentido está puliendo las fibras más finas de tu espíritu.</p>
+                </li>
+                <li className="flex gap-6 items-start">
+                  <span className="text-3xl shrink-0">🫂</span>
+                  <p className="text-lg"><strong className="text-twilight-navy">Abraza y despide tus expectativas:</strong> Esos sueños físicos que no se cumplieron, ese es el mayor duelo, y es el que debe ser abrazado y sanado. AMA tu vida real, con la personita que amas en un plano distinto pero presente. AMA sin condición, ama a quien te abraza desde adentro, a quien acaricia tus días con amor y magia, aunque a veces la mente es tan densa que no te permita ver con los ojos del alma, silencia la mente y deja que hable el corazón.</p>
+                </li>
+              </ul>
+
+              <div className="mt-16 pt-12 border-t border-ethereal-blue text-center bg-soft-lavender/20 p-10 rounded-3xl">
+                <p className="font-cormorant italic text-3xl text-deep-bronze mb-8 leading-relaxed">
+                  "Te prometo que si lo haces todos los días, verás la luz de la vida que iluminará desde lo más profundo de tu ser."
+                </p>
+                <p className="mb-8 text-lg">
+                  La vida es lo que es, no lo que quisiéramos, todo nos puede ser arrebatado pero la forma de atravesar nuestras mayores pruebas esa es nuestra gran libertad, esa es nuestra honra de AMOR, es la prueba de que el AMOR es más fuerte que el dolor, y que los milagros no solo se consiguen orando, se consiguen con oración en el corazón y acción en cada día de nuestra vida, lo que hacemos nos define.
+                </p>
+                <p className="font-bold text-twilight-navy text-2xl uppercase tracking-widest font-cinzel">
+                  Un día a la vez
+                </p>
+              </div>
+
+              {!isExpanded && (
+                <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-white via-white/90 to-transparent flex items-end justify-center pb-4">
+                  <button 
+                    onClick={() => setIsExpanded(true)} 
+                    className="bg-twilight-navy text-pearl-white px-8 py-3 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-deep-bronze transition-colors shadow-lg flex items-center gap-2"
+                  >
+                    Seguir Leyendo <ChevronRight size={16} />
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {isExpanded && (
+              <div className="mt-12 text-center">
+                <button 
+                  onClick={() => setIsExpanded(false)} 
+                  className="text-deep-bronze font-bold uppercase tracking-widest text-sm hover:text-twilight-navy transition-colors flex items-center gap-2 mx-auto"
+                >
+                  Ocultar texto
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default function App() {
   return (
@@ -480,6 +608,9 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      {/* --- BLOG / LECTURA RECOMENDADA --- */}
+      <BlogSection />
 
       {/* --- DETALLES DEL EVENTO --- */}
       <section className="py-32 bg-twilight-navy text-pearl-white relative overflow-hidden">
