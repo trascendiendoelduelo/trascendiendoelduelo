@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-cinzel: "Cinzel", serif;
+  --font-cormorant: "Cormorant Garamond", serif;
+  --font-montserrat: "Montserrat", sans-serif;
+
+  --color-twilight-navy: #1B263B;
+  --color-ethereal-blue: #BEE3ED;
+  --color-pearl-white: #F8F9FA;
+  --color-deep-bronze: #5E503F;
+  --color-champagne-gold: #F1E5AC;
+  --color-soft-lavender: #E2E2F3;
+}
+
+@layer base {
+  body {
+    @apply bg-pearl-white text-twilight-navy font-montserrat antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-cinzel;
+  }
+
+  .italic-accent {
+    @apply font-cormorant italic;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F8F9FA;
+}
+::-webkit-scrollbar-thumb {
+  background: #1B263B;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #5E503F;
+}
