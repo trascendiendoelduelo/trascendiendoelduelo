@@ -745,7 +745,7 @@ export default function App() {
                 </li>
                 <li className="flex gap-4 border-b border-ethereal-blue pb-4">
                   <span className="font-bold text-deep-bronze min-w-[80px]">01:30 PM</span>
-                  <span>Receso Almuerzo (Libre)</span>
+                  <span>Coffee Break 2</span>
                 </li>
                 <li className="flex gap-4 border-b border-ethereal-blue pb-4">
                   <span className="font-bold text-deep-bronze min-w-[80px]">03:00 PM</span>
