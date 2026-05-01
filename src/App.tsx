@@ -17,7 +17,8 @@ import {
   CreditCard,
   Smartphone,
   HelpCircle,
-  Handshake
+  Handshake,
+  Share2
 } from 'lucide-react';
 
 /**
@@ -394,13 +395,11 @@ export default function App() {
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
               </a>
               <a 
-                href={BROCHURE_PDF_URL} 
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#evento"
                 className="w-full sm:w-auto bg-champagne-gold text-twilight-navy px-8 py-4 rounded-full font-bold text-lg hover:bg-white transition-all duration-300 shadow-xl flex items-center justify-center gap-2"
               >
-                <Download size={20} />
-                Descargar Brochure
+                <Calendar size={20} />
+                Ver detalles del evento
               </a>
               <a 
                 href={WHATSAPP_URL} 
@@ -666,7 +665,7 @@ export default function App() {
       </section>
 
       {/* --- DETALLES DEL EVENTO --- */}
-      <section className="py-32 bg-twilight-navy text-pearl-white relative overflow-hidden">
+      <section id="evento" className="py-32 bg-twilight-navy text-pearl-white relative overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row items-center gap-20">
             <div className="lg:w-1/2">
@@ -687,7 +686,7 @@ export default function App() {
                   { icon: <Calendar />, label: "Fecha", value: "Domingo 03 de Mayo" },
                   { icon: <Clock />, label: "Horario", value: "08:30 a. m. a 04:00 p. m." },
                   { icon: <CheckCircle2 />, label: "Modalidad", value: "Taller Vivencial Presencial" },
-                  { icon: <Smartphone />, label: "Incluye", value: "Coffee Break & Material para taller" }
+                  { icon: <CheckCircle2 />, label: "Incluye", value: "Ingreso al Taller • Coffee Break • Almuerzo • Media Beca Piscina \"Berendson\" • Sorteos" }
                 ].map((item, idx) => (
                   <motion.div 
                     key={idx}
@@ -703,10 +702,13 @@ export default function App() {
                     <div>
                       <p className="text-sm font-bold uppercase tracking-[0.2em] text-pearl-white/40 mb-1">{item.label}</p>
                       {item.link ? (
-                        <a href={item.link} target="_blank" rel="noopener noreferrer" className="hover:text-champagne-gold transition-colors">
-                          <p className="text-xl font-medium">{item.value}</p>
-                          {item.sub && <p className="text-sm text-pearl-white/60">{item.sub}</p>}
-                        </a>
+                        <div>
+                          <p className="text-xl font-medium text-white">{item.value}</p>
+                          {item.sub && <p className="text-sm text-pearl-white/60 mb-3">{item.sub}</p>}
+                          <a href={item.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.1em] bg-champagne-gold/20 text-champagne-gold px-4 py-2 rounded-full hover:bg-champagne-gold hover:text-twilight-navy transition-all duration-300">
+                            <MapPin size={14} /> Aquí mira en Google Maps
+                          </a>
+                        </div>
                       ) : (
                         <p className="text-xl font-medium">{item.value}</p>
                       )}
@@ -727,33 +729,84 @@ export default function App() {
               </div>
               <h3 className="text-4xl mb-6">Agenda del Día</h3>
               <ul className="space-y-6">
-                <li className="flex gap-4 border-b border-ethereal-blue pb-4">
-                  <span className="font-bold text-deep-bronze min-w-[80px]">08:30 AM</span>
-                  <span>Registro y Bienvenida Ceremonial</span>
+                <li className="flex flex-col sm:flex-row gap-1 sm:gap-4 border-b border-ethereal-blue pb-5">
+                  <span className="font-bold text-deep-bronze shrink-0 sm:w-28">08:30 AM</span>
+                  <span className="font-medium flex items-center gap-2">Registro y bienvenida</span>
                 </li>
-                <li className="flex gap-4 border-b border-ethereal-blue pb-4">
-                  <span className="font-bold text-deep-bronze min-w-[80px]">09:30 AM</span>
-                  <span>Bloque 1</span>
+                
+                <li className="flex flex-col sm:flex-row gap-1 sm:gap-4 border-b border-ethereal-blue pb-5">
+                  <span className="font-bold text-deep-bronze shrink-0 sm:w-28">09:15 AM</span>
+                  <div className="flex flex-col gap-3">
+                    <span className="font-medium">Opening – Daniela Sarfatti</span>
+                    <div>
+                      <span className="font-bold block">JuanCa Power:</span>
+                      <span className="text-sm text-twilight-navy/80 leading-snug">Neuro-Resiliencia: Programando la mente para trascender el dolor y crear una nueva realidad</span>
+                    </div>
+                  </div>
                 </li>
-                <li className="flex gap-4 border-b border-ethereal-blue pb-4">
-                  <span className="font-bold text-deep-bronze min-w-[80px]">11:00 AM</span>
-                  <span>Coffee Break & Networking</span>
+
+                <li className="flex flex-col sm:flex-row gap-1 sm:gap-4 border-b border-ethereal-blue pb-5">
+                  <span className="font-bold text-deep-bronze shrink-0 sm:w-28">09:30 AM</span>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-twilight-navy/40 font-bold mb-1">Bloque 1</span>
+                    <span className="font-bold block">Yolanda Ponce De León:</span>
+                    <span className="text-sm text-twilight-navy/80 leading-snug">¿Cómo vivir cuando una parte de ti se fue? Comprender la pérdida, la impermanencia y el vínculo que nunca muere</span>
+                  </div>
                 </li>
-                <li className="flex gap-4 border-b border-ethereal-blue pb-4">
-                  <span className="font-bold text-deep-bronze min-w-[80px]">11:30 AM</span>
-                  <span>Bloque 2</span>
+
+                <li className="flex flex-col sm:flex-row gap-1 sm:gap-4 border-b border-ethereal-blue pb-5">
+                  <span className="font-bold text-deep-bronze shrink-0 sm:w-28">11:00 AM</span>
+                  <span className="font-medium flex items-center gap-2"><span className="text-xl">☕</span> Coffee Break</span>
                 </li>
-                <li className="flex gap-4 border-b border-ethereal-blue pb-4">
-                  <span className="font-bold text-deep-bronze min-w-[80px]">01:30 PM</span>
-                  <span>Coffee Break 2</span>
+
+                <li className="flex flex-col sm:flex-row gap-1 sm:gap-4 border-b border-ethereal-blue pb-5">
+                  <span className="font-bold text-deep-bronze shrink-0 sm:w-28">11:30 AM</span>
+                  <div className="flex flex-col gap-4">
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-twilight-navy/40 font-bold mb-1">Bloque 2</span>
+                    <div>
+                      <span className="font-bold block">Romy Díaz:</span>
+                      <span className="text-sm text-twilight-navy/80 leading-snug">Estrategias para encontrar significado y propósito después de una pérdida</span>
+                    </div>
+                    <div>
+                      <span className="font-bold block">Claudia Hurtado:</span>
+                      <span className="text-sm text-twilight-navy/80 leading-snug">Resignificar, propósito y honrar. Un camino para sanar, el milagro que estabas esperando</span>
+                    </div>
+                  </div>
                 </li>
-                <li className="flex gap-4 border-b border-ethereal-blue pb-4">
-                  <span className="font-bold text-deep-bronze min-w-[80px]">03:00 PM</span>
-                  <span>Bloque 3</span>
+
+                <li className="flex flex-col sm:flex-row gap-1 sm:gap-4 border-b border-ethereal-blue pb-5">
+                  <span className="font-bold text-deep-bronze shrink-0 sm:w-28">01:00 PM</span>
+                  <span className="font-medium flex items-center gap-2"><span className="text-xl">🍽️</span> Almuerzo</span>
                 </li>
-                <li className="flex gap-4">
-                  <span className="font-bold text-deep-bronze min-w-[80px]">04:00 PM</span>
-                  <span>Cierre y Despedida</span>
+
+                <li className="flex flex-col sm:flex-row gap-1 sm:gap-4 border-b border-ethereal-blue pb-5">
+                  <span className="font-bold text-deep-bronze shrink-0 sm:w-28">01:45 PM</span>
+                  <span className="font-medium flex items-center gap-2"><span className="text-xl">🎁</span> Sorteo</span>
+                </li>
+
+                <li className="flex flex-col sm:flex-row gap-1 sm:gap-4 border-b border-ethereal-blue pb-5">
+                  <span className="font-bold text-deep-bronze shrink-0 sm:w-28">02:00 PM</span>
+                  <span className="font-medium flex items-center gap-2"><span className="text-xl">🗣️</span> Bloque de testimonios</span>
+                </li>
+
+                <li className="flex flex-col sm:flex-row gap-1 sm:gap-4 border-b border-ethereal-blue pb-5">
+                  <span className="font-bold text-deep-bronze shrink-0 sm:w-28">02:30 PM</span>
+                  <div className="flex flex-col gap-4">
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-twilight-navy/40 font-bold mb-1">Bloque 3</span>
+                    <div>
+                      <span className="font-bold block">Yhis Bohórquez:</span>
+                      <span className="text-sm text-twilight-navy/80 leading-snug">El amor es más fuerte que el dolor</span>
+                    </div>
+                    <div>
+                      <span className="font-bold block">Daniela Sarfatti:</span>
+                      <span className="text-sm text-twilight-navy/80 leading-snug">Sentir para sanar. El poder del amor en el duelo</span>
+                    </div>
+                  </div>
+                </li>
+
+                <li className="flex flex-col sm:flex-row gap-1 sm:gap-4">
+                  <span className="font-bold text-deep-bronze shrink-0 sm:w-28">03:45 PM</span>
+                  <span className="font-medium flex items-center gap-2"><span className="text-xl">✨</span> Cierre del evento</span>
                 </li>
               </ul>
             </motion.div>
@@ -791,13 +844,17 @@ export default function App() {
                   <p className="italic-accent text-xl text-deep-bronze mt-4">Pago único por persona</p>
                 </div>
 
+                <div className="text-center mb-8">
+                  <h4 className="text-2xl font-bold font-cinzel text-twilight-navy">¿Qué incluye?</h4>
+                </div>
+
                 <div className="grid md:grid-cols-2 gap-6 mb-12 text-left max-w-2xl mx-auto">
                   {[
-                    "Acceso total al taller presencial",
-                    "Coffee Break premium incluido",
-                    "Material para taller",
-                    "Sesión de preguntas con ponentes",
-                    "Material digital post-evento"
+                    "Ingreso al Taller",
+                    "Coffee Break",
+                    "Almuerzo",
+                    "Media Beca Piscina \"Berendson\"",
+                    "Sorteos"
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-center gap-3">
                       <CheckCircle2 className="text-champagne-gold shrink-0" size={20} />
